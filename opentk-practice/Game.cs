@@ -39,27 +39,9 @@ public class Game : GameWindow
         
         GL.BindVertexArray(0);
 
-        string vertexShaderCode = 
-            @"
-                #version 330 core
-
-                layout = (location = 0) in vec3 inPosition;
-
-                void main(){
-                    gl_Position = vec4(inPosition, 1.0);
-                }
-            ";
+        string vertexShaderCode = File.ReadAllText("/home/jeremy/Documents/Projects/opentk-practice/opentk-practice/shader.vert");
         
-        string fragShaderCode = 
-            @"
-                #version 330 core
-
-                out vec4 outColor;
-
-                void main(){
-                    outColor = vec4(0.8, 0.8, 0.1, 1.0);
-                }
-            ";
+        string fragShaderCode = File.ReadAllText("/home/jeremy/Documents/Projects/opentk-practice/opentk-practice/shader.frag");
 
         int vertexShaderHandle = GL.CreateShader(ShaderType.VertexShader);
         GL.ShaderSource(vertexShaderHandle, vertexShaderCode);
